@@ -15,7 +15,13 @@ public class BikeController : MonoBehaviour
     public Rigidbody2D rb;
     
     private float movement = 0f;
-    private float rotation = 0f;    
+    private float rotation = 0f;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
         movement = -Input.GetAxisRaw("Vertical") * speed;
@@ -42,5 +48,19 @@ public class BikeController : MonoBehaviour
         
         rb.AddTorque(-rotation * rotationSpeed);
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        string tag = other.collider.tag;
+
+        if (tag.Equals("coin"))
+        {
+            GameDataManager.AddCoins(1);
+
+            GameSharedUI.Instance.UpdateCoinsUIText();
+            
+            Destroy(other.gameObject);
+        }
     }
 }

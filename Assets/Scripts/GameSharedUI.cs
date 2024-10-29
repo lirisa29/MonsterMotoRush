@@ -25,9 +25,10 @@ public class GameSharedUI : MonoBehaviour
     private void Start()
     {
         UpdateCoinsUIText();
+        Debug.Log(Application.persistentDataPath+"/GameData/");
     }
 
-    void UpdateCoinsUIText()
+    public void UpdateCoinsUIText()
     {
         for (int i = 0; i < coinsUIText.Length; i++)
         {
