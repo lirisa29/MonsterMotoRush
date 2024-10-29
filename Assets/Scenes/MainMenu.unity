@@ -1207,6 +1207,7 @@ GameObject:
   - component: {fileID: 1010834415}
   - component: {fileID: 1010834414}
   - component: {fileID: 1010834413}
+  - component: {fileID: 1010834417}
   m_Layer: 5
   m_Name: Btn_Store
   m_TagString: Untagged
@@ -1331,6 +1332,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010834411}
   m_CullTransparentMesh: 1
+--- !u!114 &1010834417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010834411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1ad9c1811c6d843b1c5c4112efcd95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 1
 --- !u!1 &1303075504
 GameObject:
   m_ObjectHideFlags: 0
