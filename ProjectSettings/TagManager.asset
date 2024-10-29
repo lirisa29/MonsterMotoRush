@@ -13,8 +13,8 @@ TagManager:
   - UI
   - Post-Processing
   - 
-  - 
-  - 
+  - CarBase
+  - CarWheels
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 292909299
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
