@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BikeController : MonoBehaviour
 {
-    public float speed = 1500;
-    public float rotationSpeed = 15f;
+    public float speed = 1500f;
+    public float rotationSpeed = 800f;
 
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
@@ -19,7 +19,7 @@ public class BikeController : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+     
     }
 
     void Update()
@@ -46,13 +46,14 @@ public class BikeController : MonoBehaviour
             frontWheel.motor = motor;
         }
         
-        rb.AddTorque(-rotation * rotationSpeed);
+        rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
         
     }
+    
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        string tag = other.collider.tag;
+        string tag = other.tag;
 
         if (tag.Equals("coin"))
         {
