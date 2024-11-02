@@ -61,6 +61,14 @@ public class CharacterItemUI : MonoBehaviour
         characterPurchaseButton.onClick.RemoveAllListeners();
         characterPurchaseButton.onClick.AddListener(() => action.Invoke(itemIdex));
     }
+    
+    public void OnItemSelect (int itemIndex, UnityAction<int> action)
+    {
+        itemButton.interactable = true;
+
+        itemButton.onClick.RemoveAllListeners ();
+        itemButton.onClick.AddListener (() => action.Invoke (itemIndex));
+    }
 
     public void SelectItem()
     {

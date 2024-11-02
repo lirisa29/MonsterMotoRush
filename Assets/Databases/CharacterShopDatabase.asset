@@ -14,42 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - image: {fileID: 21300000, guid: c3405c518f0a70e4487a2520daf8f47c, type: 3}
-    name: 
+    name: Green Vortex
     speed: 10
     price: 0
     isPurchased: 1
   - image: {fileID: 21300000, guid: 6ce4314d6a774d14791d8bdbb2b6b939, type: 3}
-    name: 
+    name: Red Inferno
     speed: 20
     price: 250
     isPurchased: 0
   - image: {fileID: 21300000, guid: e1c970cf7412ea64fa8c4616632893e4, type: 3}
-    name: 
+    name: Aqua Fury
     speed: 30
     price: 350
     isPurchased: 0
   - image: {fileID: 21300000, guid: 9676432093aa9c74295e51683c1d75db, type: 3}
-    name: 
+    name: Purple Surge
     speed: 40
     price: 450
     isPurchased: 0
   - image: {fileID: 21300000, guid: 473ea3e4827df3e4eb54a09ee4c86d1f, type: 3}
-    name: 
+    name: Bronze Beast
     speed: 50
     price: 550
     isPurchased: 0
   - image: {fileID: 21300000, guid: 2f1ab2ca0003dd8408512440b45a02aa, type: 3}
-    name: 
+    name: Silver Phantom
     speed: 60
     price: 650
     isPurchased: 0
   - image: {fileID: 21300000, guid: 571fde8b8693b88488afbc3fb604800f, type: 3}
-    name: 
+    name: VR46 Blitz
     speed: 70
     price: 750
     isPurchased: 0
   - image: {fileID: 21300000, guid: 7e35c284928bc9e4a98b1f741ce56038, type: 3}
-    name: 
+    name: Hamilton Havoc
     speed: 80
     price: 850
     isPurchased: 0
