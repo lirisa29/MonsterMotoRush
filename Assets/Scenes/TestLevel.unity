@@ -656,9 +656,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fc67cc61fa3e84aa078bb7682074d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 650459345}
+  frontWheel: {fileID: 1023259498}
+  backWheel: {fileID: 688711728}
   flipThreshold: 360
   pointsPerFlip: 100
   score: 0
+  pointsPerWheelie: 5
+  safeAngleThreshold: 45
 --- !u!1 &688711726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,9 +1237,9 @@ GameObject:
   - component: {fileID: 1709465234}
   - component: {fileID: 1709465235}
   - component: {fileID: 1709465236}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
