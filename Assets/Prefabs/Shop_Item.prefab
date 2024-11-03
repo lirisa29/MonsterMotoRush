@@ -911,7 +911,7 @@ MonoBehaviour:
   characterPurchaseButton: {fileID: 2297095490720576448}
   itemButton: {fileID: 3368894988270274119}
   itemImage: {fileID: 4408825794262418098}
-  itemOutline: {fileID: 0}
+  itemOutline: {fileID: 7266674946323497005}
 --- !u!114 &7266674946323497005
 MonoBehaviour:
   m_ObjectHideFlags: 0
