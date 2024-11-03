@@ -4,13 +4,18 @@ using UnityEngine;
 public class FlipManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform frontWheel; // Reference to front wheel position
+    [SerializeField] private Transform backWheel;  // Reference to back wheel position
+    
+
     private bool isGrounded = false;
     private float totalRotation;
     private int flipCount;
-
+    
     public float flipThreshold = 360f;
     public int pointsPerFlip = 100;
     public int score = 0;
+    public int pointsPerWheelie = 5;
     public float safeAngleThreshold = 45f; // Safe angle range for landing
 
     private void Start()
@@ -24,10 +29,12 @@ public class FlipManager : MonoBehaviour
 
     private void Update()
     {
+        // Only track rotation if not grounded
         if (!isGrounded)
         {
             TrackRotation();
         }
+        
     }
 
     private void TrackRotation()
@@ -35,15 +42,17 @@ public class FlipManager : MonoBehaviour
         float currentRotation = transform.eulerAngles.z;
         float rotationDelta = currentRotation - totalRotation;
 
+        // Adjust for angle wrapping around 0-360
         if (rotationDelta > 180) rotationDelta -= 360;
         if (rotationDelta < -180) rotationDelta += 360;
 
         totalRotation += rotationDelta;
 
+        // Check for full flip and award points
         if (Mathf.Abs(totalRotation) >= flipThreshold)
         {
             flipCount++;
-            totalRotation = 0;
+            totalRotation = 0; // Reset rotation
             score += pointsPerFlip;
             Debug.Log($"Full Flip! Total flips: {flipCount}, Score: {score}");
         }

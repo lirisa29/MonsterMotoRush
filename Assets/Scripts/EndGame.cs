@@ -1,14 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EndGame : MonoBehaviour
 {
     
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private TextMeshProUGUI finalScore;
+    [SerializeField]private BikeController bc;
+    [SerializeField]private FlipManager fm;
+   
+
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Skill issue");
+        Time.timeScale = 0;
+        bc.collectedCoins = 0;
+        gameOverScreen.SetActive(true);
+        finalScore.text = "Score: "+ fm.score.ToString();
     }
 }
