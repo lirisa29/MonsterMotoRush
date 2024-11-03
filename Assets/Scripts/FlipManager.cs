@@ -4,13 +4,12 @@ using UnityEngine;
 public class FlipManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    public BikeController bc;
     private bool isGrounded = false;
     private float totalRotation;
     private int flipCount;
 
     public float flipThreshold = 360f;
-    public int pointsPerFlip = 100;
-    public int score = 0;
     public float safeAngleThreshold = 45f; // Safe angle range for landing
 
     private void Start()
@@ -44,8 +43,8 @@ public class FlipManager : MonoBehaviour
         {
             flipCount++;
             totalRotation = 0;
-            score += pointsPerFlip;
-            Debug.Log($"Full Flip! Total flips: {flipCount}, Score: {score}");
+            GameDataManager.AddCoins(5);
+            Debug.Log($"Full Flip! 5 Coins added!");
         }
     }
 
@@ -59,14 +58,12 @@ public class FlipManager : MonoBehaviour
             float angleZ = Mathf.Abs(transform.eulerAngles.z);
             if (angleZ <= safeAngleThreshold || angleZ >= 360 - safeAngleThreshold)
             {
-                // Award partial points only if within safe landing angle
-                float partialPoints = (Mathf.Abs(totalRotation) / flipThreshold) * pointsPerFlip;
-                score += Mathf.RoundToInt(partialPoints);
-                Debug.Log($"Safe Landing! Points awarded: {Mathf.RoundToInt(partialPoints)}, Total Score: {score}");
+                GameDataManager.AddCoins(2); 
+                Debug.Log($"Safe Landing! 2 Coins added!");
             }
             else
             {
-                Debug.Log("Unsafe Landing. No points awarded.");
+                Debug.Log("Unsafe Landing. No coins given. :(");
             }
 
             totalRotation = 0;
