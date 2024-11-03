@@ -19,7 +19,7 @@ public class BikeController : MonoBehaviour
     
     private float movement = 0f;
     private float rotation = 0f;
-    public float collectedCoins = 0;
+    public int collectedCoins = 0;
 
     private void Start()
     {
@@ -62,8 +62,8 @@ public class BikeController : MonoBehaviour
 
         if (tag.Equals("coin"))
         {
-            //GameDataManager.AddCoins(1);
-            collectedCoins = collectedCoins++;
+            GameDataManager.AddCoins(1);
+            collectedCoins++;
             
             GameSharedUI.Instance.UpdateCoinsUIText();
             

@@ -30,6 +30,12 @@ public static class GameDataManager
         SavePlayerData();
     }
 
+    public static void LostCoins(int amount)
+    {
+        playerData.coins -= amount;
+        SavePlayerData();
+    }
+    
     public static bool CanSpendCoins(int amount)
     {
         return (playerData.coins >= amount);
