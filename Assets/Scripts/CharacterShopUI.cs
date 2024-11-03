@@ -20,10 +20,27 @@ public class CharacterShopUI : MonoBehaviour
     [SerializeField] private GameObject shopUI;
     [SerializeField] private Button openShopButton;
     [SerializeField] private Button closeShopButton;
+
+    private int newSelectedItemIndex = 0;
+    private int previousSelectedItemIndex = 0;
+    
     void Start()
     {
         AddShopEvents();
 	    GenerateShopItemsUI();
+	    // set selected character in the playerDataManager
+	    SetSelectedCharacter();
+	    // select UI item
+	    SelectItemUI(GameDataManager.GetSelectedCharacterIndex());
+    }
+
+    void SetSelectedCharacter()
+    {
+	    // get saved index
+	    int index = GameDataManager.GetSelectedCharacterIndex();
+	    
+	    // set selected character
+	    GameDataManager.SetSelectedCharacter(characterDB.GetCharacter(index), index);
     }
 
 	void GenerateShopItemsUI ()
@@ -70,9 +87,30 @@ public class CharacterShopUI : MonoBehaviour
 
 	void OnItemSelected(int index)
 	{
-		Debug.Log ("select" + index);
+		// select item in the UI
+		SelectItemUI(index);
+		
+		// Save data
+		GameDataManager.SetSelectedCharacter(characterDB.GetCharacter(index), index);
 	}
-    
+
+	void SelectItemUI(int itemIndex)
+	{
+		previousSelectedItemIndex = newSelectedItemIndex;
+		newSelectedItemIndex = itemIndex;
+
+		CharacterItemUI prevUiItem = GetItemUI(previousSelectedItemIndex);
+		CharacterItemUI newUiItem = GetItemUI(newSelectedItemIndex);
+		
+		prevUiItem.DeSelectItem();
+		newUiItem.SelectItem();
+	}
+
+	CharacterItemUI GetItemUI(int index)
+	{
+		return ShopItemsContainer.GetChild(index).GetComponent<CharacterItemUI>();
+	}
+	
     void OnItemPurchased (int index)
     {
         Debug.Log ("purchase" + index);
