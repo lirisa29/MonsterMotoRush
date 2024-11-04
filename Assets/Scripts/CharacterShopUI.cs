@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CharacterShopUI : MonoBehaviour
 {
@@ -21,6 +23,17 @@ public class CharacterShopUI : MonoBehaviour
     [SerializeField] private GameObject shopUI;
     [SerializeField] private Button openShopButton;
     [SerializeField] private Button closeShopButton;
+    [SerializeField] private Button scrollUpButton;
+
+    [Space(20)] 
+    [Header("Scroll View")] 
+    [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private GameObject topScrollFade;
+    [SerializeField] private GameObject bottomScrollFade;
+
+    [Space(20)] 
+    [Header("Purchase Error message")] 
+    [SerializeField] private TMP_Text notEnoughCoinsText;
 
     private int newSelectedItemIndex = 0;
     private int previousSelectedItemIndex = 0;
@@ -33,6 +46,12 @@ public class CharacterShopUI : MonoBehaviour
 	    SetSelectedCharacter();
 	    // select UI item
 	    SelectItemUI(GameDataManager.GetSelectedCharacterIndex());
+	    AutoScrollShopList(GameDataManager.GetSelectedCharacterIndex());
+    }
+
+    private void AutoScrollShopList(int itemIndex)
+    {
+	    scrollRect.verticalNormalizedPosition = Mathf.Clamp01(1f - (itemIndex /(float) (characterDB.CharactersCount-1)));
     }
 
     void SetSelectedCharacter()
@@ -92,6 +111,18 @@ public class CharacterShopUI : MonoBehaviour
 		}
 	}
 
+	void AnimateNoMoreCoinsText()
+	{
+		notEnoughCoinsText.transform.DOComplete();
+		notEnoughCoinsText.DOComplete();
+
+		notEnoughCoinsText.transform.DOShakePosition(3f,new Vector3(5f, 0f, 0f),10,0);
+		notEnoughCoinsText.DOFade(1F, 3F).From(0f).OnComplete(() =>
+		{
+			notEnoughCoinsText.DOFade(0f, 1f);
+		});
+	}
+	
 	void OnItemSelected(int index)
 	{
 		// select item in the UI
@@ -138,7 +169,8 @@ public class CharacterShopUI : MonoBehaviour
 	    }
 	    else
 	    {
-		    Debug.Log("Not enough coins!!");
+		    AnimateNoMoreCoinsText();
+		    uiItem.AnimateShakeItem();
 	    }
     }
         
@@ -149,8 +181,51 @@ public class CharacterShopUI : MonoBehaviour
         
         closeShopButton.onClick.RemoveAllListeners();
         closeShopButton.onClick.AddListener(CloseShop);
+        
+        scrollRect.onValueChanged.RemoveAllListeners();
+        scrollRect.onValueChanged.AddListener(OnShopListScroll);
+        
+        scrollUpButton.onClick.RemoveAllListeners();
+        scrollUpButton.onClick.AddListener(OnScrollUpClicked);
     }
 
+    void OnScrollUpClicked()
+    {
+	    scrollRect.DOVerticalNormalizedPos(1f, 5f).SetEase(Ease.OutBack);
+    }
+    
+    void OnShopListScroll(Vector2 value)
+    {
+	    float scrollY = value.y;
+
+	    if (scrollY < .1f)
+	    {
+		    topScrollFade.SetActive(true);
+	    }
+	    else
+	    {
+		    topScrollFade.SetActive(false);
+	    }
+
+	    if (scrollY > 0f)
+	    {
+		    bottomScrollFade.SetActive(true);
+	    }
+	    else
+	    {
+		    bottomScrollFade.SetActive(false);
+	    }
+
+	    if (scrollY < .7f)
+	    {
+		    scrollUpButton.gameObject.SetActive(true);
+	    }
+	    else
+	    {
+		    scrollUpButton.gameObject.SetActive(false);
+	    }
+    }
+    
     void OpenShop()
     {
         shopUI.SetActive(true);

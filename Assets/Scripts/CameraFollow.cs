@@ -14,8 +14,7 @@ public class CameraFollow : MonoBehaviour
         cam = Camera.main.transform;
         offset = cam.position - target.position;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         cam.position = target.position + offset;
