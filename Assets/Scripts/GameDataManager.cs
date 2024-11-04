@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 // Shop Data Holder
 [System.Serializable]
 public class CharacterShopData
@@ -38,9 +39,16 @@ public static class GameDataManager
 
     public static void SetSelectedCharacter(Character character, int index)
     {
+        if (character == null)
+        {
+            Debug.LogError("Attempted to set a null character.");
+            return;
+        }
+
         selectedCharacter = character;
         playerData.selectedCharacterIndex = index;
         SavePlayerData();
+        Debug.Log($"Character set: {selectedCharacter}, Index: {index}");
     }
     
     public static int GetSelectedCharacterIndex()

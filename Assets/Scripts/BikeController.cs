@@ -21,10 +21,46 @@ public class BikeController : MonoBehaviour
     private float rotation = 0f;
     public int collectedCoins = 0;
 
+    [SerializeField] private GameObject[] skins;
+
     private void Start()
     {
         gameOverScreen.SetActive(false);
         Time.timeScale = 1;
+        
+        ChangePlayerSkin();
+    }
+
+    void ChangePlayerSkin()
+    {
+        Character character = GameDataManager.GetSelectedCharacter();
+        
+        if (character != null)
+        {
+            int selectedSkin = GameDataManager.GetSelectedCharacterIndex();
+            Debug.Log($"Selected Skin Index: {selectedSkin}");
+
+            if (selectedSkin >= 0 && selectedSkin < skins.Length)
+            {
+                skins[selectedSkin].SetActive(true);
+
+                for (int i = 0; i < skins.Length; i++)
+                {
+                    if (i != selectedSkin)
+                    {
+                        skins[i].SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Selected skin index is out of bounds.");
+            }
+        }
+        else
+        {
+            Debug.LogError("No character selected. Please ensure a character is set.");
+        }
     }
 
     void Update()

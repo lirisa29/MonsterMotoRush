@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 207735119}
   - component: {fileID: 207735118}
   - component: {fileID: 207735121}
+  - component: {fileID: 207735122}
   m_Layer: 5
   m_Name: Btn_Play
   m_TagString: Untagged
@@ -469,6 +470,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0.9924528, b: 0.1713686, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &207735122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207735116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1ad9c1811c6d843b1c5c4112efcd95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 1
 --- !u!1 &366927090
 GameObject:
   m_ObjectHideFlags: 0
