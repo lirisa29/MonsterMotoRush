@@ -98,7 +98,7 @@ public class BikeController : MonoBehaviour
 
         if (tag.Equals("coin"))
         {
-            GameDataManager.AddCoins(1);
+            GameDataManager.AddCoins(250);
             collectedCoins++;
             
             GameSharedUI.Instance.UpdateCoinsUIText();

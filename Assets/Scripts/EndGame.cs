@@ -18,8 +18,8 @@ public class EndGame : MonoBehaviour
     {
         Debug.Log("Skill issue");
         Time.timeScale = 0;
-        GameDataManager.LostCoins(bc.collectedCoins);
-        GameSharedUI.Instance.UpdateCoinsUIText();
+       // GameDataManager.LostCoins(bc.collectedCoins);
+       // GameSharedUI.Instance.UpdateCoinsUIText();
         gameOverScreen.SetActive(true);
         finalScore.text = "Score: "+ fm.score.ToString();
     }

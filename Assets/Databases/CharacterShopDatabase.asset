@@ -22,7 +22,7 @@ MonoBehaviour:
     name: Red Inferno
     speed: 20
     price: 250
-    isPurchased: 1
+    isPurchased: 0
   - image: {fileID: 21300000, guid: e1c970cf7412ea64fa8c4616632893e4, type: 3}
     name: Aqua Fury
     speed: 30

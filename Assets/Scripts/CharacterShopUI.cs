@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,12 +45,18 @@ public class CharacterShopUI : MonoBehaviour
     }
 
 	void GenerateShopItemsUI ()
-	{	
+	{
+		for (int i = 0; i < GameDataManager.GetAllPurchasedCharacter().Count; i++)
+		{
+			int purchasedCharacterIndex = GameDataManager.GetPurchasedCharacter(i);
+			characterDB.PurchaseCharacter(purchasedCharacterIndex);
+		}
+		
 		//Delete itemTemplate after calculating item's Height :
 		itemHeight = ShopItemsContainer.GetChild (0).GetComponent <RectTransform> ().sizeDelta.y;
 		Destroy (ShopItemsContainer.GetChild (0).gameObject);
 		//DetachChildren () will make sure to delete it from the hierarchy, otherwise if you 
-		//write ShopItemsContainer.ChildCount you w'll get "1"
+		//write ShopItemsContainer.ChildCount you will get "1"
 		ShopItemsContainer.DetachChildren ();
 
 		//Generate Items
@@ -113,7 +120,26 @@ public class CharacterShopUI : MonoBehaviour
 	
     void OnItemPurchased (int index)
     {
-        Debug.Log ("purchase" + index);
+	    Character character = characterDB.GetCharacter(index);
+	    CharacterItemUI uiItem = GetItemUI(index);
+
+	    if (GameDataManager.CanSpendCoins(character.price))
+	    {
+		    GameDataManager.SpendCoins(character.price);
+		    
+		    GameSharedUI.Instance.UpdateCoinsUIText();
+		    
+		    characterDB.PurchaseCharacter(index);
+		    
+		    uiItem.SetCharacterAsPurchased();
+		    uiItem.OnItemSelect(index, OnItemSelected);
+		    
+		    GameDataManager.AddPurchasedCharacter(index);
+	    }
+	    else
+	    {
+		    Debug.Log("Not enough coins!!");
+	    }
     }
         
     void AddShopEvents()
