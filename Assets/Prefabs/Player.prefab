@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3789cdd0ad037d468d52733969c0ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
+  gameOverScreen: {fileID: 2488399280575501691, guid: d1f8218ab99f5bf4b93680e547ead62a, type: 3}
   speed: 2000
   rotationSpeed: 800
   backWheel: {fileID: 7649645919716107513}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf96192b277d4fa4f98129b0faf2df04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
+  gameOverScreen: {fileID: 2488399280575501691, guid: d1f8218ab99f5bf4b93680e547ead62a, type: 3}
   finalScore: {fileID: 0}
   bc: {fileID: 4316072679431661717}
   fm: {fileID: 1131461885663779256}
