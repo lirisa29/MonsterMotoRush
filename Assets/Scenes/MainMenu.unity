@@ -2899,6 +2899,8 @@ MonoBehaviour:
   urpPipelineAsset: {fileID: 11400000, guid: 68c0a60471cb2df44aa9459647ff7e19, type: 2}
   shaderEffect1Feature: {fileID: 5161067136589138658, guid: b4b0dc489a34154449e6b60bd3921933, type: 2}
   shaderEffect2Feature: {fileID: -1713151241556833448, guid: b4b0dc489a34154449e6b60bd3921933, type: 2}
+  shaderEffect3Feature: {fileID: -6440336949939038479, guid: b4b0dc489a34154449e6b60bd3921933, type: 2}
+  shaderEffect4Feature: {fileID: 7869785262576493489, guid: b4b0dc489a34154449e6b60bd3921933, type: 2}
   targetScene: 0
 --- !u!4 &1616653524
 Transform:
