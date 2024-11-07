@@ -13,7 +13,7 @@ public class SceneController : MonoBehaviour
     private static int level4Scene = 5;
     private static int level5Scene = 6;
     private static int level6Scene = 7;
-
+    
     public static void LoadMainScene()
     {
         SceneManager.LoadScene(mainScene);

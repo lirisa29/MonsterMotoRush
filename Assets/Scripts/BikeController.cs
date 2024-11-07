@@ -22,6 +22,16 @@ public class BikeController : MonoBehaviour
     public int collectedCoins = 0;
 
     [SerializeField] private GameObject[] skins;
+    
+    private AudioManager audioManager;
+    public AudioSource bikeSound;
+    [Range(0, 1)] public float minPitch;
+    [Range(1, 5)] public float maxPitch;
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -68,6 +78,7 @@ public class BikeController : MonoBehaviour
         movement = -Input.GetAxisRaw("Vertical") * speed;
         rotation = Input.GetAxisRaw("Horizontal");
         
+        EngineSound();
     }
 
     private void FixedUpdate()
@@ -90,19 +101,22 @@ public class BikeController : MonoBehaviour
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
         
     }
-    
 
+    void EngineSound()
+    {
+        bikeSound.pitch = Mathf.Lerp(minPitch, maxPitch, Mathf.Abs(movement));
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         string tag = other.tag;
 
         if (tag.Equals("coin"))
         {
-            GameDataManager.AddCoins(250);
-            collectedCoins++;
-            
+            audioManager.PlaySFX(audioManager.coin);
+            GameDataManager.AddCoins(50);
+            collectedCoins += 50;
             GameSharedUI.Instance.UpdateCoinsUIText();
-            
             Destroy(other.gameObject);
         }
     }

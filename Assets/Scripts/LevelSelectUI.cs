@@ -15,6 +15,13 @@ public class LevelSelectUI : MonoBehaviour
     [SerializeField] private Button openMenuButton;
     [SerializeField] private Button closeMenuButton;
 
+    private AudioManager audioManager;
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    
     private void Start()
     {
         AddEvents();
@@ -48,11 +55,13 @@ public class LevelSelectUI : MonoBehaviour
 
     void OpenMenu()
     {
+        audioManager.PlaySFX(audioManager.buttons);
         levelSelectUI.SetActive(true);
     }
 
     void CloseMenu()
     {
+        audioManager.PlaySFX(audioManager.buttons);
         levelSelectUI.SetActive(false);
     }
 }

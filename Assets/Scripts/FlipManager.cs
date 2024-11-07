@@ -17,6 +17,13 @@ public class FlipManager : MonoBehaviour
     public int score = 0;
     public int pointsPerWheelie = 5;
     public float safeAngleThreshold = 45f; // Safe angle range for landing
+    
+    private AudioManager audioManager;
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -71,6 +78,7 @@ public class FlipManager : MonoBehaviour
                 // Award partial points only if within safe landing angle
                 float partialPoints = (Mathf.Abs(totalRotation) / flipThreshold) * pointsPerFlip;
                 score += Mathf.RoundToInt(partialPoints);
+                audioManager.PlaySFX(audioManager.win);
                 Debug.Log($"Safe Landing! Points awarded: {Mathf.RoundToInt(partialPoints)}, Total Score: {score}");
             }
             else

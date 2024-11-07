@@ -38,6 +38,13 @@ public class CharacterShopUI : MonoBehaviour
     private int newSelectedItemIndex = 0;
     private int previousSelectedItemIndex = 0;
     
+    private AudioManager audioManager;
+    
+    private void Awake()
+    {
+	    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    
     void Start()
     {
         AddShopEvents();
@@ -228,11 +235,13 @@ public class CharacterShopUI : MonoBehaviour
     
     void OpenShop()
     {
+	    audioManager.PlaySFX(audioManager.buttons);
         shopUI.SetActive(true);
     }
 
     void CloseShop()
     {
+	    audioManager.PlaySFX(audioManager.buttons);
         shopUI.SetActive(false);
     }
 }

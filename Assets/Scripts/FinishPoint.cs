@@ -7,9 +7,18 @@ using UnityEngine.SceneManagement;
 public class FinishPoint : MonoBehaviour
 {
     [SerializeField] private GameObject winScreen;
+    
+    private AudioManager audioManager;
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
             Time.timeScale = 0;
+            audioManager.PlaySFX(audioManager.win);
             winScreen.SetActive(true);
             UnlockNewLevel();
     }
