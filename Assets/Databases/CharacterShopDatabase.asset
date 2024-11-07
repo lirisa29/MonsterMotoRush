@@ -43,13 +43,13 @@ MonoBehaviour:
     speed: 60
     price: 650
     isPurchased: 0
-  - image: {fileID: 21300000, guid: 571fde8b8693b88488afbc3fb604800f, type: 3}
-    name: VR46 Blitz
+  - image: {fileID: 21300000, guid: 7e35c284928bc9e4a98b1f741ce56038, type: 3}
+    name: Hamilton Havoc
     speed: 70
     price: 750
     isPurchased: 0
-  - image: {fileID: 21300000, guid: 7e35c284928bc9e4a98b1f741ce56038, type: 3}
-    name: Hamilton Havoc
+  - image: {fileID: 21300000, guid: 571fde8b8693b88488afbc3fb604800f, type: 3}
+    name: Valo Blitz
     speed: 80
     price: 850
     isPurchased: 0
