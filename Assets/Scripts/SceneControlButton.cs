@@ -10,7 +10,14 @@ public class SceneControlButton : MonoBehaviour
     enum TargetScene
     {
         MainMenu,
-        Store
+        Tutorial,
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5,
+        Level6,
+        Retry
     }
 
     [SerializeField] private TargetScene targetScene;
@@ -26,8 +33,36 @@ public class SceneControlButton : MonoBehaviour
                 button.onClick.AddListener(() => SceneController.LoadMainScene());
                 break;
             
-            case TargetScene.Store:
-                button.onClick.AddListener(() => SceneController.LoadStore());
+            case TargetScene.Tutorial:
+                button.onClick.AddListener(() => SceneController.LoadTutorial());
+                break;
+            
+            case TargetScene.Level1:
+                button.onClick.AddListener(() => SceneController.LoadLevel1());
+                break;
+            
+            case TargetScene.Level2:
+                button.onClick.AddListener(() => SceneController.LoadLevel2());
+                break;
+            
+            case TargetScene.Level3:
+                button.onClick.AddListener(() => SceneController.LoadLevel3());
+                break;
+            
+            case TargetScene.Level4:
+                button.onClick.AddListener(() => SceneController.LoadLevel4());
+                break;
+            
+            case TargetScene.Level5:
+                button.onClick.AddListener(() => SceneController.LoadLevel5());
+                break;
+            
+            case TargetScene.Level6:
+                button.onClick.AddListener(() => SceneController.LoadLevel6());
+                break;
+            
+            case TargetScene.Retry:
+                button.onClick.AddListener(() => SceneController.RetryButton());
                 break;
         }
     }

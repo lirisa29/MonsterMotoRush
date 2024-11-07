@@ -16,6 +16,7 @@ public class PlayerData
 {
     public int coins = 0;
     public int selectedCharacterIndex = 0;
+    public int unlockedLevel = 1;
 }
 
 public static class GameDataManager
@@ -32,6 +33,17 @@ public static class GameDataManager
     }
     
     // Player Data Methods
+    public static int GetUnlockedLevel()
+    {
+        return playerData.unlockedLevel;
+    }
+
+    public static void SetUnlockedLevel(int level)
+    {
+        playerData.unlockedLevel = level;
+        SavePlayerData();
+    }
+    
     public static Character GetSelectedCharacter()
     {
         return selectedCharacter;
