@@ -18,11 +18,20 @@ public class PlayerData
     public int selectedCharacterIndex = 0;
     public int unlockedLevel = 1;
 }
+// Audio Data Holder
+[System.Serializable]
+public class AudioData
+{
+    public float musicVolume = 1.0f;
+    public float sfxVolume = 1.0f;
+    public float bikeVolume = 1.0f;
+}
 
 public static class GameDataManager
 {
     private static PlayerData playerData = new PlayerData();
     private static CharacterShopData characterShopData = new CharacterShopData();
+    private static AudioData audioData = new AudioData();
 
     private static Character selectedCharacter;
 
@@ -30,6 +39,7 @@ public static class GameDataManager
     {
         LoadPlayerData();
         LoadCharacterShopData();
+        LoadAudioVolume();
     }
     
     // Player Data Methods
@@ -135,5 +145,51 @@ public static class GameDataManager
     {
         BinarySerializer.Save(characterShopData, "character-shop-data.txt");
         UnityEngine.Debug.Log("<color=magenta>[CharacterShopData] Saved.</color>");
+    }
+    
+    // Audio Data Methods
+    public static float GetMusicVolume()
+    {
+        return audioData.musicVolume;
+    }
+
+    public static void SetMusicVolume(float volume)
+    {
+        audioData.musicVolume = volume;
+        SaveAudioVolume();
+    }
+    
+    public static float GetSFXVolume()
+    {
+        return audioData.sfxVolume;
+    }
+
+    public static void SetSFXVolume(float volume)
+    {
+        audioData.sfxVolume = volume;
+        SaveAudioVolume();
+    }
+    
+    public static float GetBikeVolume()
+    {
+        return audioData.bikeVolume;
+    }
+
+    public static void SetBikeVolume(float volume)
+    {
+        audioData.bikeVolume = volume;
+        SaveAudioVolume();
+    }
+
+    private static void LoadAudioVolume()
+    {
+        audioData = BinarySerializer.Load<AudioData>("music-data.txt");
+        UnityEngine.Debug.Log("<color=green>[AudioData] Loaded.</color>");
+    }
+
+    private static void SaveAudioVolume()
+    {
+        BinarySerializer.Save(audioData, "music-data.txt");
+        UnityEngine.Debug.Log("<color=magenta>[AudioData] Saved.</color>");
     }
 }

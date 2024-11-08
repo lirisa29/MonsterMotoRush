@@ -61,6 +61,7 @@ public class FlipManager : MonoBehaviour
             flipCount++;
             totalRotation = 0; // Reset rotation
             score += pointsPerFlip;
+            audioManager.PlaySFX(audioManager.flip);
             Debug.Log($"Full Flip! Total flips: {flipCount}, Score: {score}");
         }
     }
@@ -78,7 +79,7 @@ public class FlipManager : MonoBehaviour
                 // Award partial points only if within safe landing angle
                 float partialPoints = (Mathf.Abs(totalRotation) / flipThreshold) * pointsPerFlip;
                 score += Mathf.RoundToInt(partialPoints);
-                audioManager.PlaySFX(audioManager.win);
+                audioManager.PlaySFX(audioManager.flip);
                 Debug.Log($"Safe Landing! Points awarded: {Mathf.RoundToInt(partialPoints)}, Total Score: {score}");
             }
             else

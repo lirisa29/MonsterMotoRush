@@ -2873,6 +2873,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 200436388}
+    - target: {fileID: 2133115104274354015, guid: 80e11724582168143b605354c9689e30, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3162595551192906797, guid: 45c94134f1afdd34c9006460ec528b34, type: 2}
     - target: {fileID: 4316072679431661717, guid: 80e11724582168143b605354c9689e30, type: 3}
       propertyPath: minPitch
       value: 0.1
