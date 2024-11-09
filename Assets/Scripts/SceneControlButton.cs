@@ -18,7 +18,8 @@ public class SceneControlButton : MonoBehaviour
         Level4,
         Level5,
         Level6,
-        Retry
+        Retry,
+        Quit
     }
 
     [SerializeField] private TargetScene targetScene;
@@ -65,6 +66,10 @@ public class SceneControlButton : MonoBehaviour
             
             case TargetScene.Retry:
                 button.onClick.AddListener(() => SceneController.RetryButton());
+                break;
+            
+            case TargetScene.Quit:
+                button.onClick.AddListener(() => SceneController.QuitButton());
                 break;
         }
     }
