@@ -11,8 +11,7 @@ public class EndGame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField]private BikeController bc;
     [SerializeField]private FlipManager fm;
-   
-    private AudioManager audioManager;
+     private AudioManager audioManager;
     
     private void Awake()
     {
@@ -22,11 +21,21 @@ public class EndGame : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Skill issue");
+        GameOver();
+        //finalScore.text = "Score: "+ fm.score.ToString();
+    }
+
+    public void GameOver()
+    {
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
+        }
+        
         Time.timeScale = 0;
         audioManager.PlaySFX(audioManager.death);
         GameDataManager.LostCoins(bc.collectedCoins);
         GameSharedUI.Instance.UpdateCoinsUIText();
         gameOverScreen.SetActive(true);
-        finalScore.text = "Score: "+ fm.score.ToString();
     }
 }

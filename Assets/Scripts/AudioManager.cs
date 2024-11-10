@@ -17,9 +17,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip win;
     public AudioClip flip;
 
+    private static AudioManager instance;
+    
     private void Awake()
     {
-        DontDestroyOnLoad (gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            DestroyImmediate(gameObject);
+        }
     }
     
     private void Start()
