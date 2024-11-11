@@ -20,8 +20,10 @@ public class EndGame : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Skill issue");
-        GameOver();
+        
+            Debug.Log("Skill issue");
+            GameOver();
+        
         //finalScore.text = "Score: "+ fm.score.ToString();
     }
 

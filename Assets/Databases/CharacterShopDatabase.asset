@@ -36,20 +36,20 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 473ea3e4827df3e4eb54a09ee4c86d1f, type: 3}
     name: Bronze Beast
     speed: 50
-    price: 550
+    price: 1000
     isPurchased: 0
   - image: {fileID: 21300000, guid: 2f1ab2ca0003dd8408512440b45a02aa, type: 3}
     name: Silver Phantom
     speed: 60
-    price: 650
+    price: 1500
     isPurchased: 0
   - image: {fileID: 21300000, guid: 7e35c284928bc9e4a98b1f741ce56038, type: 3}
     name: Hamilton Havoc
     speed: 70
-    price: 750
+    price: 2000
     isPurchased: 0
   - image: {fileID: 21300000, guid: 571fde8b8693b88488afbc3fb604800f, type: 3}
     name: Valo Blitz
     speed: 80
-    price: 850
+    price: 2500
     isPurchased: 0
