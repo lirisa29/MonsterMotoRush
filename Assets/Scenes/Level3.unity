@@ -11718,6 +11718,10 @@ PrefabInstance:
       propertyPath: endgame
       value: 
       objectReference: {fileID: 1733449517}
+    - target: {fileID: 7115033907338428797, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
+      propertyPath: levelIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8104183932638970882, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11741,6 +11745,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6673549674541084869, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
   m_PrefabInstance: {fileID: 1432474178}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1432474181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115033907338428797, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
+  m_PrefabInstance: {fileID: 1432474178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9271b089771c943acd6c949448fdcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1432474182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3182478569243650586, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
+  m_PrefabInstance: {fileID: 1432474178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1432474183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5887705360468781170, guid: c4ab5eeb519fc0c4d89693ae8e70d0e9, type: 3}
+  m_PrefabInstance: {fileID: 1432474178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1733449516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11964,9 +12001,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2868854473190459378, guid: e2cb76ec1d45b8746b6e34959914f1ab, type: 3}
+      propertyPath: timerUI
+      value: 
+      objectReference: {fileID: 1432474181}
+    - target: {fileID: 2868854473190459378, guid: e2cb76ec1d45b8746b6e34959914f1ab, type: 3}
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 1432474179}
+    - target: {fileID: 2868854473190459378, guid: e2cb76ec1d45b8746b6e34959914f1ab, type: 3}
+      propertyPath: bestTimeText
+      value: 
+      objectReference: {fileID: 1432474182}
+    - target: {fileID: 2868854473190459378, guid: e2cb76ec1d45b8746b6e34959914f1ab, type: 3}
+      propertyPath: currentTimeText
+      value: 
+      objectReference: {fileID: 1432474183}
     - target: {fileID: 4366516853824194173, guid: e2cb76ec1d45b8746b6e34959914f1ab, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -9,6 +9,7 @@ public class TimerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float remainingTime;
     [SerializeField] private EndGame endgame;
+    [SerializeField] private int levelIndex;
 
     private void Update()
     {
@@ -29,5 +30,20 @@ public class TimerUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         timerText.text = string.Format("{0 :00} :{1 : 00}", minutes, seconds);
+    }
+
+    public void SaveBestTimeForLevel(float currentTime)
+    {
+        GameDataManager.SetBestTimeForLevel(levelIndex, currentTime);
+    }
+
+    public float GetBestTimeForLevel()
+    {
+        return GameDataManager.GetBestTimeForLevel(levelIndex);
+    }
+
+    public float GetRemainingTime()
+    {
+        return remainingTime;
     }
 }

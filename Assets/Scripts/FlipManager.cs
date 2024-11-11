@@ -60,7 +60,8 @@ public class FlipManager : MonoBehaviour
         {
             flipCount++;
             totalRotation = 0; // Reset rotation
-            score += pointsPerFlip;
+            //score += pointsPerFlip;
+            GameDataManager.AddCoins(60);
             audioManager.PlaySFX(audioManager.flip);
             Debug.Log($"Full Flip! Total flips: {flipCount}, Score: {score}");
         }

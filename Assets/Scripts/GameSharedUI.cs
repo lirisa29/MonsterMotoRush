@@ -40,7 +40,7 @@ public class GameSharedUI : MonoBehaviour
     {
         if (value >= 1000)
         {
-            textMesh.text = string.Format("{0}k.{1}", (value / 1000), GetFirstDigitFromNumber(value % 1000) );
+            textMesh.text = string.Format("{0}.{1}k", (value / 1000), GetFirstDigitFromNumber(value % 1000) );
         }
         else
         {

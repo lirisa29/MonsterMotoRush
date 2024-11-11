@@ -17,6 +17,7 @@ public class PlayerData
     public int coins = 0;
     public int selectedCharacterIndex = 0;
     public int unlockedLevel = 1;
+    public Dictionary<int, float> bestTimes = new Dictionary<int, float>();
 }
 // Audio Data Holder
 [System.Serializable]
@@ -41,7 +42,7 @@ public static class GameDataManager
         LoadCharacterShopData();
         LoadAudioVolume();
     }
-    
+
     // Player Data Methods
     public static int GetUnlockedLevel()
     {
@@ -53,7 +54,7 @@ public static class GameDataManager
         playerData.unlockedLevel = level;
         SavePlayerData();
     }
-    
+
     public static Character GetSelectedCharacter()
     {
         return selectedCharacter;
@@ -72,12 +73,12 @@ public static class GameDataManager
         SavePlayerData();
         Debug.Log($"Character set: {selectedCharacter}, Index: {index}");
     }
-    
+
     public static int GetSelectedCharacterIndex()
     {
         return playerData.selectedCharacterIndex;
     }
-    
+
     public static int GetCoins()
     {
         return playerData.coins;
@@ -94,7 +95,7 @@ public static class GameDataManager
         playerData.coins -= amount;
         SavePlayerData();
     }
-    
+
     public static bool CanSpendCoins(int amount)
     {
         return (playerData.coins >= amount);
@@ -106,7 +107,26 @@ public static class GameDataManager
         SavePlayerData();
     }
 
-    static void LoadPlayerData()
+    public static float GetBestTimeForLevel(int levelIndex)
+    {
+        if (playerData.bestTimes.ContainsKey(levelIndex))
+        {
+            return playerData.bestTimes[levelIndex];
+        }
+
+        return float.MaxValue;
+    }
+
+    public static void SetBestTimeForLevel(int levelIndex, float time)
+    {
+        if (!playerData.bestTimes.ContainsKey(levelIndex) || time > playerData.bestTimes[levelIndex])
+        {
+            playerData.bestTimes[levelIndex] = time;
+            SavePlayerData();
+        }
+    }
+
+static void LoadPlayerData()
     {
         playerData = BinarySerializer.Load<PlayerData>("player-data.txt");
         UnityEngine.Debug.Log("<color=green>[PlayerData] Loaded.</color>");
